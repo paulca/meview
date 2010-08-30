@@ -1,0 +1,7 @@
+<p>A simple app for keeping reviews of the things you like.</p>
+
+<ul id="reviews">
+  {{#reviews}}
+    <li><a href="/reviews/{{id}}" data-ajax-history="true">{{title}}</a></li>
+  {{/reviews}}
+</ul>

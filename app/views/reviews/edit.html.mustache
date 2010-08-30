@@ -1,0 +1,15 @@
+<div class="edit-review">
+  <form data-id="{{id}}" data-bind="reviews#update">
+
+      <label for="review-title">Title</label><br />
+
+        <input type="text" name="title" value="{{title}}" data-attribute="title"><br />
+
+      <label for="review-description">Description</label><br />
+
+        <textarea name="description" data-attribute="description">{{description }}</textarea><br />
+    <input type="submit" name="commit" value="Save">
+    or
+    <a href="/reviews" data-ajax-history="true">Cancel</a>
+  </form>
+</div>

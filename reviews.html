@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Reviews</title>
+  </head>
+  <body>
+    
+    <h1>Reviews</h1>
+
+    <h2>Add:</h2>
+    
+    <form data-bind="reviews#create">
+
+        <label for="review-title">Title</label><br />
+
+          <input type="text" name="title" value="" data-attribute="title"><br />
+
+        <label for="review-description">Description</label><br />
+
+          <textarea name="description" data-attribute="description"></textarea><br />
+
+      <input type="submit" name="commit" value="Save">
+    </form>
+    
+    <div id="reviews">
+      
+    </div>
+  </body>
+  <script src="vendor/jquery/jquery-1.4.2.min.js"></script>
+  <script src="vendor/mustache/mustache.0.3.0.js"></script>
+  <script src="vendor/eyeballs/o_O.js"></script>
+  <script src="vendor/eyeballs/modules/o_O.model.js"></script>
+  <script src="vendor/eyeballs/modules/o_O.validations.js"></script>
+  <script src="vendor/eyeballs/drivers/jquery/modules/o_O.controller.js"></script>
+  <script src="vendor/eyeballs/drivers/jquery/modules/o_O.routes.js"></script>
+  <script src="vendor/eyeballs/drivers/jquery/modules/o_O.support.js"></script>
+  <script src="vendor/eyeballs/adapters/o_O.localstorage.js"></script>
+  <script src="config/initializer.js"></script>
+  <script src="config/routes.js"></script>
+  <script src="app/models/review.js"></script>
+  <script src="app/controllers/reviews_controller.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    $(function(){
+      ReviewsController.index();
+    })
+  </script>
+</html>
