@@ -10,7 +10,9 @@ o_O('ReviewsController', {
     });
   },
   add: function(){
-    o_O.render('reviews/new', {}, {html: 'div#content'})
+    o_O.render('reviews/new', {}, {html: 'div#content'}, function(){
+      $('#title').focus()
+    })
   },
   create: function(){
     var review = Review.initialize(o_O.params($(this)));
@@ -24,34 +26,24 @@ o_O('ReviewsController', {
       }
     })
   },
-  edit: function(){
-    review_div = $(this).parents('div.review');
-    review = Review.find(review_div.attr('data-id'), function(review){
-      o_O.get_template('reviews/edit', review, function(data, template){
-        edit_review = Mustache.to_html(template, data);
-        review_div.hide().after(edit_review);
+  edit: function(params){
+    Review.find(params('id'), function(review){
+      o_O.render('reviews/edit', review, {html: 'div#content'}, function(){
+        $('#title').focus();
       });
-    });
+    })
   },
   update: function(){
-    edit_review_div = $(this).parents('div.edit-review');
-    review_div = edit_review_div.prev('div.review:first');
     var form = $(this);
-    Review.find(form.attr('data-id'), function(Review){
-      if(Review.valid())
-      {
-        Review.update_attributes(o_O.params(form), function(updated_review){
-          o_O.get_template('reviews/_review', updated_review, function(data, template){ 
-            var template = Mustache.to_html(template, data);
-            edit_review_div.replaceWith(template);
-            review_div.remove();
-          });
-        });
-      }
-      else
-      {
-         o_O.alert_errors(review);
-      }
+    Review.find(form.attr('data-id'), function(review){
+      review.update_attributes(o_O.params(form), {
+        invalid: function(review){
+          o_O.alert_errors(review);
+        },
+        success: function(review){
+          window.location.hash = '/reviews/' + review.id;
+        }
+      })
     });
   },
   destroy: function(){
@@ -61,7 +53,7 @@ o_O('ReviewsController', {
         var div = $(this);
         Review.find($(this).attr('data-id'), function(review){
           review.destroy();
-          div.remove();
+          window.location.hash = '/reviews/';
         });
       });
     }

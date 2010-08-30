@@ -1,19 +1,24 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-  "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!doctype html>
+<html lang="en">
+
   <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8"/>
     <title>Meview</title>
-    <link rel="stylesheet" href="meaning.css" type="text/css" media="screen" title="Meaning" charset="utf-8">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" media="all" href="meaning.css"/>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
   </head>
-  
+
   <body>
-    <h2>Meview</h2>
+  
+    <h1>Meview</h1>
     
-    <div class="nav">
+    <div id="nav">
       <ul>
-        <li><a href="/" data-ajax-history="true">Home</a></li>
-        <li><a href="/reviews" data-ajax-history="true">Reviews</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="#/reviews" data-ajax-history="true">Reviews</a></li>
       </ul>
     </div>
     
@@ -37,5 +42,7 @@
     <script src="app/models/review.js"></script>
     <script src="app/controllers/reviews_controller.js"></script>
     <script src="app/controllers/home_controller.js"></script>
+    
   </body>
+  
 </html>

@@ -21,7 +21,7 @@ o_O.params = function(form){
     });
   }
   
-o_O.render = function(template, data, options){
+o_O.render = function(template, data, options, callback){
   o_O.get_template(template, data, function(data, template){ 
     var rendered = Mustache.to_html(template, data);
     if(typeof options === 'object')
@@ -42,6 +42,10 @@ o_O.render = function(template, data, options){
       {
         $(options.html).html(rendered);
       }
+    }
+    if(typeof callback === 'function')
+    {
+      setTimeout(callback, 100);
     }
   });
 }
