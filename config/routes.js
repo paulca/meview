@@ -6,6 +6,7 @@ o_O.routes.draw(function(map){
   map.root({to: 'home#show'});
   
   map.match('/', {to: 'home#show'})
+  map.match('/reviews/continue_editing/:id', {to: 'reviews#continue_editing'})
   map.match('/reviews/edit/:id', {to: 'reviews#edit'})
   map.match('/reviews/new', {to: 'reviews#add'})
   map.match('/reviews', {to: 'reviews#index'})

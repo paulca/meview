@@ -27,10 +27,39 @@ o_O('ReviewsController', {
     })
   },
   edit: function(params){
+    console.log('editing for some reason')
     Review.find(params('id'), function(review){
       o_O.render('reviews/edit', review, {html: 'div#content'}, function(){
         $('#title').focus();
       });
+    })
+  },
+  continue_editing: function(params){
+    if($('div#new-review').length === 0)
+    {
+      ReviewsController.show(params)
+    }
+    else
+    {
+      $('div#new-review form').attr('data-bind', 'reviews#update')
+                          .find('input[type=text]').attr('data-bind', 'reviews#save').end()
+                          .find('textarea').attr('data-bind', 'reviews#save').end()
+                          .find('input[type=submit]').val('Done')
+    }
+  },
+  save_new: function(){
+    var form = $(this).parents('form');
+    var review = Review.initialize(o_O.params(form));
+    review.save({
+      success: function(review){
+        window.location.hash = '/reviews/continue_editing/' + review.id;
+      }
+    })
+  },
+  save: function(){
+    var form = $(this).parents('form');
+    Review.find(form.attr('data-id'), function(review){
+      review.update_attributes(o_O.params(form));
     })
   },
   update: function(){
