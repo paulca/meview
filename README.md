@@ -10,5 +10,9 @@ A simple app for reviewing things you like.  Also doubles as a neat demonstratio
 
     ruby app.rb
 
-## Visit
+## Visit the app ##
+
+    http://localhost:4567/
+
+## Enjoy! ##
 
